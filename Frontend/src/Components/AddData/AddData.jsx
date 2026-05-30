@@ -21,7 +21,7 @@ function handleChange(e){
         phone:customer.phone
     }
     try{
-     const res= await fetch("http://localhost:8082/add",{
+     const res= await fetch("https://customer-crud-app-backend.onrender.com/add",{
         method:"POST",
         headers:{
         "Content-Type":"application/json",
