@@ -4,7 +4,7 @@ function FetchData(){
     const[data,setData]=useState([])
     const[edit,setEdit]=useState(null)
         useEffect(()=>{
-            fetch("http://localhost:8082/customer")
+            fetch("https://customer-crud-app-backend.onrender.com/customer")
             .then(res=>res.json())
             .then(res=>setData(res))
     },[])
@@ -17,7 +17,7 @@ function FetchData(){
         }
 
         try{
-            await fetch(`http://localhost:8082/update`,{
+            await fetch(`https://customer-crud-app-backend.onrender.com/update`,{
                 method:"PUT",
                 headers:{
                     "Content-Type":'application/json'
@@ -32,7 +32,7 @@ function FetchData(){
     }
      async function handleDelete(id){
         try{
-     await fetch(`http://localhost:8082/delete/${id}`,{
+     await fetch(`https://customer-crud-app-backend.onrender.com/delete/${id}`,{
         method:"DELETE"
      });
      setData(
