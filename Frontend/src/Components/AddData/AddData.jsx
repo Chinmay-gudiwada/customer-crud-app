@@ -43,7 +43,7 @@ function AddData(){
 
       try{
          await axios.post(
-            "https://customer-crud-app-backend.onrender.com/add",
+            "https://customer-crud-app-backend.onrender.com/customers",
             customer
          );
 
