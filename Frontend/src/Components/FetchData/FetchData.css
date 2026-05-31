@@ -1,7 +1,27 @@
 h2{
     text-align: center;
 }
+.search{
+     display: block;
+ margin-left: auto;
+  margin-right: 50px; 
+    border-radius: 10px 5px;
+    background-color: bisque;
+    color: black;
+    /* margin-left: 5px; */
+    padding: 3px;
+    width: 300px;
+    
+} 
+.search:hover{
+    border-color: purple;
+}
 
+.search:focus{
+    outline: none;
+    border: 2px solid purple;
+}
+   
 .table{
     text-align: center;
     border: 10px;

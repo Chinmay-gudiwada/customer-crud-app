@@ -1,40 +1,45 @@
 import { useEffect, useState } from "react"
+import axios from 'axios';
 import './FetchData.css'
+
 function FetchData(){
     const[data,setData]=useState([])
     const[edit,setEdit]=useState(null)
+    const[search,setSearch]=useState("")
         useEffect(()=>{
-            fetch("https://customer-crud-app-backend.onrender.com/customer")
-            .then(res=>res.json())
-            .then(res=>setData(res))
+            axios.get("https://customer-crud-app-backend.onrender.com/customer")
+            
+            .then(res=>{setData(res.data);console.log(res.data)}).catch(err=>console.log(err))
+      
     },[])
     async function handleUpdate(item) 
     {
-        const updatedcustomer={
-         id:item.id,
-         name:item.name,
-         phone:item.phone
+        if(!/^[A-Za-z ]+$/.test(item.name)){
+            alert("Please enter name correctly.")
+            return
         }
-
+        if(!/^\d{10}$/.test(item.phone)){
+            alert("Please enter phone number with only 10 digits.")
+            return
+        }
+    
         try{
-            await fetch(`https://customer-crud-app-backend.onrender.com/update`,{
-                method:"PUT",
-                headers:{
-                    "Content-Type":'application/json'
-                },
-                body:JSON.stringify(updatedcustomer)
-            })
+            await axios .put(`https://customer-crud-app-backend.onrender.com/update`,item)
+            
            setEdit(null)
+           alert("Customer updated successfully..")
+            console.log("Customer updated successfully..")
         }catch(err){
             console.log(err)
         }
         
+       
     }
      async function handleDelete(id){
         try{
-     await fetch(`https://customer-crud-app-backend.onrender.com/delete/${id}`,{
-        method:"DELETE"
-     });
+     await axios .delete(`https://customer-crud-app-backend.onrender.com/delete/${id}`);
+     console.log("Customer deleted ")
+      alert("Customer deleted ")
      setData(
         data.filter(item=>item.id!==id)
      )
@@ -48,9 +53,10 @@ function FetchData(){
     return (
         <>
         <div className="table-container">
-        <h2>Data</h2>
-    
+        <h2>Customer List</h2>
+        <input type="search" className="search"placeholder="🔍 Search by name"value={search} onChange={(e)=>setSearch(e.target.value)}/><br/>
             <div>
+                <br/>
                 <table className="table">
                    <thead >
                     <tr>
@@ -62,7 +68,7 @@ function FetchData(){
                     </tr>
                     </thead>
                     <tbody>
-                    {data.filter(item=>item.id!==0).map(item=>(
+                    {data.filter(item=>item.id!==0).filter(item=>item.name.toLowerCase().includes(search.toLowerCase())).map(item=>(
                     <tr key={item.id}>
                         <td>{item.id}</td>
                         <td>
@@ -80,7 +86,7 @@ function FetchData(){
                                 type="text"
                                 maxLength={10}
                                 value={item.phone}
-                                onChange={e=>setData(data.map(c=>c.id===item.id?{...c,phone:e.target.value}:c))
+                                onChange={e=>setData(data.map(c=>c.id===item.id?{...c,phone:e.target.value.replace(/\D/g,"")}:c))
                             }/>):item.phone}</td>
                         <td>
                             {edit===item.id?(
@@ -88,7 +94,10 @@ function FetchData(){
                             <button className="btnupdate" onClick={()=>setEdit(item.id)}>Update</button> )}
                         </td>
                         <td>
-                           <button className="btndelete" onClick={()=>handleDelete(item.id)}>Delete</button> 
+                           <button className="btndelete" onClick={()=>
+                            {
+                            if(window.confirm("Are you sure you want to delete customer ?"))
+                            handleDelete(item.id)}}>Delete</button> 
                         </td>
                     </tr>
                     ))}
