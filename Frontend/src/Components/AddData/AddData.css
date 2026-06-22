@@ -1,6 +1,28 @@
+.container{
+    text-align:center;
+}
+
+.container h2{
+    color:#2563eb;
+    margin-bottom:25px;
+}
+
+form{
+    width:450px;
+    margin:0 auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+label{
+    font-size:20px;
+    font-weight:500;
+}
+
 .inputfield{
-    border-radius: 5px;
-    margin: 20px;
-    background-color: antiquewhite;
-    
+    width:250px;
+    padding:10px;
+    border:1px solid #d1d5db;
 }

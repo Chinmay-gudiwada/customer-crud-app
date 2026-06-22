@@ -1,79 +1,69 @@
-h2{
-    text-align: center;
-}
-.search{
-     display: block;
- margin-left: auto;
-  margin-right: 50px; 
-    border-radius: 10px 5px;
-    background-color: bisque;
-    color: black;
-    /* margin-left: 5px; */
-    padding: 3px;
-    width: 300px;
-    
-} 
-.search:hover{
-    border-color: purple;
+.table-container{
+    max-width:1100px;
+    margin:25px auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 
-.search:focus{
-    outline: none;
-    border: 2px solid purple;
+.table-container h2{
+    text-align:center;
+    color:#2563eb;
 }
-   
+
+.search{
+    display:block;
+    margin-left:auto;
+    width:300px;
+    padding:10px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+}
+
 .table{
-    text-align: center;
-    border: 10px;
-    border-radius: 20px;
-    padding: 20px 20px;
-    width:75%;   
-    height: 75%;
-    
+    width:100%;
+    border-collapse:collapse;
 }
-table{
-    border-collapse: collapse;
-    margin: auto;
-}
+
 thead{
-    text-align: center
+    background:#2563eb;
+    color:white;
 }
-th,td{
-    padding:12px;
-     border:1px solid black;
+
+th,
+td{
+    padding:14px;
+    text-align:center;
+    border-bottom:1px solid #e5e7eb;
 }
- .btnupdate{
-    background-color:purple;
-    border: none;
-    color: wheat;
-    border-radius: 10px ;
-    cursor: pointer;
-   padding:5px 20px;
-   margin: 10px;
-   transition: 0.3s;    
+
+tbody tr:nth-child(even){
+    background:#f8fafc;
 }
-.btnupdate:hover{
-    background-color:gray;
+
+tbody tr:hover{
+    background:#eef4ff;
 }
-.btnsave{
-    background-color: aqua;
-    border-radius: 10px;
-    margin: 10px;
-    padding: 5px 20px;
-    color: black;
-    cursor: pointer;
-}
-.btnsave:hover{
-    background-color:rgb(150, 227, 227);
-}
+
+.btnupdate,
+.btnsave,
 .btndelete{
-    background-color: red;
-    border-radius: 20px;
-    margin: 10px;
-    padding: 5px 20px;
-    color: black;
-    cursor: pointer;
+    border:none;
+    padding:8px 14px;
+    border-radius:6px;
+    color:white;
+    cursor:pointer;
 }
-.btndelete:hover{
-    background-color:rgb(212, 119, 119);
+
+.btnupdate{
+    background:#2563eb;
+}
+
+.btnsave{
+    background:#16a34a;
+}
+
+.btndelete{
+    background:#dc2626;
 }

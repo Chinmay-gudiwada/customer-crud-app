@@ -1,7 +1,7 @@
 import { useState } from "react"
 import './AddData.css'
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 
 function AddData(){
 
@@ -61,6 +61,9 @@ function AddData(){
    }
     return(
         <>
+            <Link to="/">
+  <button className="btn">Home</button>
+</Link>
         <div className="container">
         <h2> Add Customer Details </h2>
         <form onSubmit={handleSubmit }>

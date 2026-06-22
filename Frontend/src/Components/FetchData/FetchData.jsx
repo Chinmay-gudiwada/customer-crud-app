@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from 'axios';
 import './FetchData.css'
+import { Link } from "react-router-dom";
 
 function FetchData(){
     const[data,setData]=useState([])
@@ -52,6 +53,9 @@ function FetchData(){
     
     return (
         <>
+        <Link to="/">
+  <button className="btn">Home</button>
+</Link>
         <div className="table-container">
         <h2>Customer List</h2>
         <input type="search" className="search"placeholder="🔍 Search by name"value={search} onChange={(e)=>setSearch(e.target.value)}/><br/>
