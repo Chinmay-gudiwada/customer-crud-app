@@ -8,7 +8,7 @@ function FetchData(){
     const[edit,setEdit]=useState(null)
     const[search,setSearch]=useState("")
         useEffect(()=>{
-            axios.get("https://customer-crud-app-backend.onrender.com/customers")
+            axios.get("http://localhost:8080/customers")
             
             .then(res=>{setData(res.data);console.log(res.data)}).catch(err=>console.log(err))
       
@@ -25,7 +25,7 @@ function FetchData(){
         }
     
         try{
-            await axios .put(`https://customer-crud-app-backend.onrender.com/customers/update`,item)
+            await axios .put(`http://localhost:8080/customers/update`,item)
             
            setEdit(null)
            alert("Customer updated successfully..")
@@ -38,7 +38,7 @@ function FetchData(){
     }
      async function handleDelete(id){
         try{
-     await axios .delete(`https://customer-crud-app-backend.onrender.com/customers/${id}`);
+     await axios .delete(`http://localhost:8080/customers/${id}`);
      console.log("Customer deleted ")
       alert("Customer deleted ")
      setData(
